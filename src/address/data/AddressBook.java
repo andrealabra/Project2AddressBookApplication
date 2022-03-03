@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- * @author Student Name
+ * @author Priyanka, 
  * @version 1.0
  * @since 1.2
  *
