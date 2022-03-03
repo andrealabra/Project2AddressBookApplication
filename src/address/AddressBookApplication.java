@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * @author Student Name
+ * @author Arshdeep Singh
  * @version 1.0
  * @since 1.2
  *
