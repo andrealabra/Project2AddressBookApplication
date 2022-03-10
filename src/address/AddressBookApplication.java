@@ -1,12 +1,14 @@
 package address;
 import address.data.AddressBook;
 import address.data.AddressEntry;
+import address.gui.MainGUI;
 
+import javax.swing.*;
 import java.io.*;
 import java.util.*;
 
 /**
- * @author Arshdeep Singh
+ * @author Arshdeep Singh, Andrea Labra
  * @version 1.0
  * @since 1.2
  *
@@ -21,6 +23,7 @@ public class AddressBookApplication {
      * @param args command line arguments passed to main
      */
     public static void main(String[] args) {
+
 
         //create instance of AddressBook for application
         AddressBook ab = new AddressBook();

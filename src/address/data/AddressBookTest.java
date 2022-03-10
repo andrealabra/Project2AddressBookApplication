@@ -14,7 +14,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 /**
- * @author Student Name
+ * @author Andrea Labra
  * @version 1.0
  * @since 1.2
  *
