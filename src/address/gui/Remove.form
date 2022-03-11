@@ -16,12 +16,12 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="9e5c2" class="javax.swing.JButton" binding="addButton" default-binding="true">
+          <component id="9e5c2" class="javax.swing.JButton" binding="deleteButton">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Add "/>
+              <text value="Delete"/>
             </properties>
           </component>
           <component id="8e1fa" class="javax.swing.JTextField" binding="removeAContactFromTextField" default-binding="true">
