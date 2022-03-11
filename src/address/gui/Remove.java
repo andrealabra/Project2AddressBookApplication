@@ -12,5 +12,6 @@ public class Remove {
     private JButton addButton;
     private JTextField removeAContactFromTextField;
     private JButton cancelButton;
+    private JEditorPane editorPane1;
 }
 
