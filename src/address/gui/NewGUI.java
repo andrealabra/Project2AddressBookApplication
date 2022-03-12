@@ -28,7 +28,7 @@ public class NewGUI extends JFrame{
     private JPanel newPanel;
     //public JPanel newPanel;
 
-    protected AddressEntry newEntry;
+    private AddressEntry newEntry;
 
     public NewGUI(){
         add(newPanel);

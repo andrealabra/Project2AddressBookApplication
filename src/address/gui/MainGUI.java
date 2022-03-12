@@ -18,7 +18,7 @@ public class MainGUI extends JFrame {
     Vector<AddressEntry> addressEntryList = new Vector<AddressEntry>();
 
     DefaultListModel<AddressEntry> myaddressEntryListModel = new DefaultListModel<AddressEntry>();
-    
+
 
     public MainGUI(){
 
@@ -47,6 +47,8 @@ public class MainGUI extends JFrame {
                     public void run() {
 //                         write your code here
                         NewGUI newGUI = new NewGUI();
+                        myaddressEntryListModel.add(addressEntryJList.getModel().getSize(),newGUI.getNewEntry());
+
                     };
                 });
             }
