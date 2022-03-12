@@ -18,18 +18,16 @@ public class MainGUI extends JFrame {
     Vector<AddressEntry> addressEntryList = new Vector<AddressEntry>();
 
     DefaultListModel<AddressEntry> myaddressEntryListModel = new DefaultListModel<AddressEntry>();
-
-
-
-
+    
 
     public MainGUI(){
 
         add(mainPanel);
         setLayout(new GridLayout());
-        dummyData();
-        listingJScrollPane = new JScrollPane(this.addressEntryJList);
-        getContentPane().add(this.listingJScrollPane, BorderLayout.CENTER);
+
+        //listingJScrollPane = new JScrollPane(this.addressEntryJList);
+        listingJScrollPane.setViewportView(addressEntryJList);
+       //getContentPane().add(this.listingJScrollPane, BorderLayout.CENTER);
         //add(listingJScrollPane);
         this.addressEntryJList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -53,7 +51,12 @@ public class MainGUI extends JFrame {
                 });
             }
         });
-
+        displayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dummyData();
+            }
+        });
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,7 +93,8 @@ public class MainGUI extends JFrame {
         {  this.myaddressEntryListModel.add(i, this.addressEntryList.elementAt(i)); }
         //Now when we create our JList do it from our ListModel rather than our vector of AddressEntry
 
-        this.addressEntryJList = new JList<AddressEntry>(this.myaddressEntryListModel);
+        addressEntryJList.setModel(myaddressEntryListModel);
+        //this.addressEntryJList = new JList<AddressEntry>(this.myaddressEntryListModel);
 
         //setting up the look of the JList
 
