@@ -3,10 +3,11 @@ package address.gui;
 import address.data.AddressEntry;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class New {
+public class NewGUI extends JFrame{
     private JLabel firstNameLabel;
     private JTextField firstNameTextField;
     private JLabel lastNameLabel;
@@ -24,10 +25,18 @@ public class New {
     private JLabel streetLabel;
     private JTextField streetTextField;
     private JButton submitButton;
+    private JPanel newPanel;
+    //public JPanel newPanel;
 
-    AddressEntry newEntry;
+    protected AddressEntry newEntry;
 
-    public New(){
+    public NewGUI(){
+        add(newPanel);
+        setLayout(new GridLayout());
+        setTitle("New Entry Form");
+        setSize(600,600);
+        setVisible(true);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,5 +44,9 @@ public class New {
                         Integer.parseInt(zipCodeTextField.getText()),emailTextField.getText(),phoneNumberTextField.getText());
             }
         });
+    }
+
+    public AddressEntry getNewEntry() {
+        return newEntry;
     }
 }
