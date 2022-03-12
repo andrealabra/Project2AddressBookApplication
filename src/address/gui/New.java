@@ -13,4 +13,10 @@ public class New {
     private JTextField cityTextField;
     private JLabel stateLabel;
     private JTextField stateTextField;
+    private JLabel zipCodeLabel;
+    private JTextField zipCodeTextField;
+    private JLabel phoneNumberLabel;
+    private JTextField phoneNumberTextField;
+    private JLabel emailLabel;
+    private JTextField emailTextField;
 }
