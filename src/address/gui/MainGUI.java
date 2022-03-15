@@ -48,6 +48,7 @@ public class MainGUI extends JFrame {
 //                         write your code here
                         NewGUI newGUI = new NewGUI();
                         myaddressEntryListModel.add(addressEntryJList.getModel().getSize(),newGUI.getNewEntry());
+                        System.out.println(newGUI.getNewEntry());
 
                     };
                 });
