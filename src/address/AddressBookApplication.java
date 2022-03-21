@@ -117,13 +117,13 @@ public class AddressBookApplication {
         conn.close();
 
 
-//        SwingUtilities.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                // write your code here
-//                MainGUI mainGUI = new MainGUI();
-//            }
-//        });
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                // write your code here
+                MainGUI mainGUI = new MainGUI();
+            }
+        });
 }
 
     /**
