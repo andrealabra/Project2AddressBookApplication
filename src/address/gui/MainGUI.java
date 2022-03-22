@@ -9,18 +9,49 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.Vector;
 
+/**
+ * public class of MainGui which extents
+ */
 public class MainGUI extends JFrame {
+    /**
+     * private JPanel that Creating a panel to add buttons
+     */
     private JPanel mainPanel;
+    /**
+     *  private JScrollPane listingJScrollPane that creates a scroll pane
+     */
     private JScrollPane listingJScrollPane;
+    /**
+     * JButton newButton create a labeled button that Adds
+     */
     private JButton newButton;
+    /**
+     * JButton removeButton create a labeled button that Remove
+     */
     private JButton removeButton;
+    /**
+     * JButton displayButton create a labeled button that Adds
+     */
     private JButton displayButton;
+    /**
+     *  class JList represents a list of text items and have AddressEntry in it.
+     */
     private JList <AddressEntry> addressEntryJList;
+
+    /**
+     * Vector that has addressEntryList passed
+     */
+
     Vector<AddressEntry> addressEntryList = new Vector<AddressEntry>();
 
-
+    /**
+     * DefaultListModel as a Model (predefined) for JList
+     */
     DefaultListModel<AddressEntry> myaddressEntryListModel = new DefaultListModel<AddressEntry>();
 
+    /**
+     *  Public MainGUI
+     */
 
     public MainGUI(){
 
@@ -87,6 +118,10 @@ public class MainGUI extends JFrame {
 
     }
 
+    /**
+     *  dummyData that make a dummy addressEntryList with 2 AddressEntry objects
+     */
+
     public void dummyData(){
         //make a dummy addressEntryList with 2 AddressEntry objects--Project 2 will read from Database instead,etc.
 //        addressEntryList.add(new AddressEntry("Lynne", "Grewe", "33 A street", "Hayward", "CA", 9399,"l@csueastbay.edu","555-1212"));
@@ -109,6 +144,10 @@ public class MainGUI extends JFrame {
 
 
     }
+
+    /**
+     * displayData that reads from Database
+     */
 
     private void displayData(){
         try {
@@ -142,6 +181,11 @@ public class MainGUI extends JFrame {
         }
     }
 
+    /**
+     * deleteFromDatabase that removes it from the data base
+     * @param index send index to help fi
+     */
+
     private void deleteFromDatabase(int index){
         try {
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:mcs1004/wXTOOCL4@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
@@ -159,6 +203,10 @@ public class MainGUI extends JFrame {
             e.printStackTrace();
         }
     }
+
+    /**
+     * create scrollPane associated with JList
+     */
     public void initialize() {
         //create scrollPane associated with JList
         //JScrollPane scrollPane = new JScrollPane(this.addressEntryJList);

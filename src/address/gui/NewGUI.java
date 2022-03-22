@@ -8,29 +8,91 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
+/**
+ * public class NewGUI that extends JFrame
+ */
 public class NewGUI extends JFrame{
+    /**
+     * JLabel class is a component for placing text in a container which is FirstName Label
+     */
     private JLabel firstNameLabel;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is firstNameTextField
+     */
     private JTextField firstNameTextField;
+    /**
+     * JLabel class is a component for placing text in a container which is LastName Label
+     */
     private JLabel lastNameLabel;
+    /**
+     * JLabel class is a component for placing text in a container which is City Label
+     */
     private JLabel cityLabel;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is CityNameTextField
+     */
     private JTextField cityTextField;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is stateNameTextField
+     */
     private JTextField stateTextField;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is zipCodeTextField
+     */
     private JTextField zipCodeTextField;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is lastNameTextField
+     */
     private JTextField lastNameTextField;
+    /**
+     * JLabel class is a component for placing text in a container which is state Label
+     */
     private JLabel stateLabel;
+    /**
+     * JLabel class is a component for placing text in a container which is zipCode Label
+     */
     private JLabel zipCodeLabel;
+    /**
+     * JLabel class is a component for placing text in a container which is phoneNumber Label
+     */
     private JLabel phoneNumberLabel;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is phonenumber TextField
+     */
     private JTextField phoneNumberTextField;
+    /**
+     * JLabel class is a component for placing text in a container which is email Label
+     */
     private JLabel emailLabel;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is emailTextField
+     */
     private JTextField emailTextField;
+    /**
+     * JLabel class is a component for placing text in a container which is street Label
+     */
     private JLabel streetLabel;
+    /**
+     * JTextField class is a text component that allows the editing of a single line text which is streetTextField
+     */
     private JTextField streetTextField;
+    /**
+     * JButton newButton create a labeled button that submit
+     */
     private JButton submitButton;
+    /**
+     * private JPanel that Creating a panel to add buttons
+     */
     private JPanel newPanel;
     //public JPanel newPanel;
-
+    /**
+     * AddressEntry newEntry
+     */
     private AddressEntry newEntry;
 
+    /**
+     * public NewGUI
+     */
     public NewGUI(){
         add(newPanel);
         setLayout(new GridLayout());
@@ -48,6 +110,18 @@ public class NewGUI extends JFrame{
             }
         });
     }
+
+    /**
+     *
+     * @param firstName string
+     * @param lastName string
+     * @param street    string
+     * @param city sting
+     * @param state string
+     * @param zip int
+     * @param email string
+     * @param phone string
+     */
 
     public void postToDatabase(String firstName, String lastName, String street,
                                String city, String state, int zip, String email, String phone) {
@@ -103,6 +177,11 @@ public class NewGUI extends JFrame{
 
 
     }
+
+    /**
+     *
+     * @return newEntry
+     */
     public AddressEntry getNewEntry() {
         return newEntry;
     }

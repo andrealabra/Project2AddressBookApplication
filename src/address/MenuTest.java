@@ -18,6 +18,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * purpose: This class is used to test the Menu class
  */
 public class MenuTest {
+    /***
+     * Private static ByteArrayOutputStream
+     */
     private static final ByteArrayOutputStream testOutput = new ByteArrayOutputStream();
 
     /**
