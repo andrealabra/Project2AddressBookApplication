@@ -59,6 +59,8 @@ public class MainGUI extends JFrame {
         displayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int index = addressEntryJList.getSelectedIndex();
+                System.out.println("Index Value " + index);
                 displayData();
             }
         });
@@ -73,6 +75,8 @@ public class MainGUI extends JFrame {
                     // with our JList and remove from it the AddressEntry at this index
 
                     ((DefaultListModel<AddressEntry>) (addressEntryJList.getModel())).remove(index);
+                    deleteFromDatabase(index);
+                    System.out.println("Index Value " + index);
 
                     // NOTE in your project 2 you will also remove it from your AddressBook.addressEntryList
                     // AND ALSO remove it from the associated database table
@@ -137,6 +141,24 @@ public class MainGUI extends JFrame {
             e.printStackTrace();
         }
     }
+
+    private void deleteFromDatabase(int index){
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:mcs1004/wXTOOCL4@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
+            index += 1;
+            String sql = "DELETE FROM ADDRESSENTRYTABLE WHERE ID = " + index;
+
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            int rowsDeleted = statement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                System.out.println("A user was deleted successfully!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void initialize() {
         //create scrollPane associated with JList
         //JScrollPane scrollPane = new JScrollPane(this.addressEntryJList);
@@ -144,16 +166,19 @@ public class MainGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int index = addressEntryJList.getSelectedIndex();
+                System.out.println("Index Value " + index);
 
                 if(index != -1)//something is selected otherwise do nothing
 
                 {   //retrieve the DeffaultListModel associated
                     // with our JList and remove from it the AddressEntry at this index
+                    deleteFromDatabase(index);
+//                    ((DefaultListModel<AddressEntry>) (addressEntryJList.getModel())).remove(index);
 
-                    ((DefaultListModel<AddressEntry>) (addressEntryJList.getModel())).remove(index);
 
                     // NOTE in your project 2 you will also remove it from your AddressBook.addressEntryList
                     // AND ALSO remove it from the associated database table
+                    System.out.println("Index Value " + index);
 
                 }
             }
