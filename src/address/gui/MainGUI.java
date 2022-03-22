@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 import java.util.Vector;
 
 public class MainGUI extends JFrame {
@@ -16,6 +17,7 @@ public class MainGUI extends JFrame {
     private JButton displayButton;
     private JList <AddressEntry> addressEntryJList;
     Vector<AddressEntry> addressEntryList = new Vector<AddressEntry>();
+
 
     DefaultListModel<AddressEntry> myaddressEntryListModel = new DefaultListModel<AddressEntry>();
 
@@ -57,7 +59,7 @@ public class MainGUI extends JFrame {
         displayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dummyData();
+                displayData();
             }
         });
         removeButton.addActionListener(new ActionListener() {
@@ -83,25 +85,57 @@ public class MainGUI extends JFrame {
 
     public void dummyData(){
         //make a dummy addressEntryList with 2 AddressEntry objects--Project 2 will read from Database instead,etc.
-        addressEntryList.add(new AddressEntry("Lynne", "Grewe", "33 A street", "Hayward", "CA", 9399,"l@csueastbay.edu","555-1212"));
+//        addressEntryList.add(new AddressEntry("Lynne", "Grewe", "33 A street", "Hayward", "CA", 9399,"l@csueastbay.edu","555-1212"));
 
-        addressEntryList.add(new AddressEntry("Jane", "Doe", "22 Cobble street", "Hayward", "CA", 9399,"jane@csueastbay.edu","555-9999"));
+//        addressEntryList.add(new AddressEntry("Jane", "Doe", "22 Cobble street", "Hayward", "CA", 9399,"jane@csueastbay.edu","555-9999"));
 
         //because we want to REMOVE or ADD to our JList we have to create it
 
         //from a DefaultListModel (see https://docs.oracle.com/javase/tutorial/uiswing/components/list.html)
         // to which we add the elements of our collection of AddressEntry objects
 
-        for(int i = 0; i<addressEntryList.size(); i++)
-        {  this.myaddressEntryListModel.add(i, this.addressEntryList.elementAt(i)); }
+//        for(int i = 0; i<addressEntryList.size(); i++)
+//        {  this.myaddressEntryListModel.add(i, this.addressEntryList.elementAt(i)); }
         //Now when we create our JList do it from our ListModel rather than our vector of AddressEntry
 
-        addressEntryJList.setModel(myaddressEntryListModel);
+//        addressEntryJList.setModel(myaddressEntryListModel);
         //this.addressEntryJList = new JList<AddressEntry>(this.myaddressEntryListModel);
 
         //setting up the look of the JList
 
 
+    }
+
+    private void displayData(){
+        try {
+            String sql = "SELECT * FROM ADDRESSENTRYTABLE";
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:mcs1004/wXTOOCL4@adcsdb01.csueastbay.edu:1521/mcspdb.ad.csueastbay.edu");
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+
+            int count = 0;
+
+            while (result.next()) {
+                String firstname = result.getString(1);
+                String lastname = result.getString(2);
+                String street = result.getString(3);
+                String city = result.getString(4);
+                String state = result.getString(5);
+                int zip = result.getInt(6);
+                String phone = result.getString(7);
+                String email = result.getString(8);
+
+                addressEntryList.add(new AddressEntry(firstname, lastname, street, city, state, zip, email,phone));
+            }
+            for(int i = 0; i<addressEntryList.size(); i++) {
+
+                this.myaddressEntryListModel.add(i, this.addressEntryList.elementAt(i));
+
+            }
+            addressEntryJList.setModel(myaddressEntryListModel);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void initialize() {
         //create scrollPane associated with JList
