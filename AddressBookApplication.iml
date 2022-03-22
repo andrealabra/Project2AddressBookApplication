@@ -84,7 +84,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/instantclient-basic-windows.x64-21.3.0.0.0/instantclient_21_3/ojdbc8.jar!/" />
+          <root url="jar://$MODULE_DIR$/ojdbc8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
